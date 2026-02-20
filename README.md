@@ -1,125 +1,154 @@
-# SkillNest
+# 🚀 SkillNest  
 
-SkillNest is a complete course discovery platform for students. It features a modern Next.js frontend and a robust Node.js/Express backend with MongoDB.
+> A modern full-stack course discovery and enrollment platform built with Next.js, Node.js, Express, and MongoDB.
 
-## Tech Stack
+SkillNest is designed to provide students with a seamless experience for discovering, exploring, and enrolling in online courses. The platform focuses on clean UI, smooth authentication, role-based access, and scalable backend architecture.
 
-*   **Frontend:** Next.js 14 (App Router), Tailwind CSS, Lucide React, Axios
-*   **Backend:** Node.js, Express, MongoDB (Mongoose), JWT, Bcrypt
-*   **Database:** MongoDB
-*   **Language:** TypeScript (Frontend & Backend)
+---
 
-## Project Structure
+## 🌐 Live Links
 
-```
+🔗 **Live Website**  
+https://smarrtif-assignment-skill-nest-6lslo64j3.vercel.app/
+
+🎨 **Figma Wireframe**  
+https://www.figma.com/design/ngTITZXfPWxqPiHLOzKAqW/SkillNest-Wireframe?node-id=0-1&t=SP5FjHVYmQ6iE4jH-1
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+- Next.js 14 (App Router)
+- TypeScript
+- Tailwind CSS
+- Lucide React
+- Axios
+
+### Backend
+- Node.js
+- Express.js
+- TypeScript
+- MongoDB (Mongoose)
+- JWT Authentication
+- Bcrypt
+
+### Database
+- MongoDB
+
+---
+
+## 🧩 Features
+
+### 👤 Authentication & Authorization
+- JWT-based secure authentication
+- Role-based access (Admin / Student)
+- Protected routes
+- Secure password hashing
+
+### 📚 Course Management
+- Browse all courses
+- View detailed course pages
+- Admin CRUD operations for courses
+- Clean and responsive UI
+
+### 🎓 Enrollment System
+- Enroll in courses
+- View enrolled courses
+- Prevent duplicate enrollments
+- User-specific dashboards
+
+### ⚡ Performance & UX
+- Responsive design
+- Optimized frontend rendering
+- Modular backend architecture
+- Clean and scalable folder structure
+
+---
+
+## 📁 Project Structure
+
+```text
 skillnest/
- ├── client/          # Next.js Frontend
- │   ├── src/app      # App Router Pages
- │   ├── src/components # UI Components
- │   └── ...
- └── server/          # Express Backend
-     ├── src/models   # Mongoose Models
-     ├── src/controllers # Route Controllers
-     ├── src/routes   # API Routes
-     └── ...
+├── client/                 # Next.js Frontend
+│   ├── src/app/            # App Router Pages
+│   ├── src/components/     # Reusable UI Components
+│   └── ...
+└── server/                 # Express Backend
+    ├── src/models/         # Mongoose Models
+    ├── src/controllers/    # Business Logic
+    ├── src/routes/         # API Routes
+    └── ...
 ```
 
-## Setup Instructions
+---
 
-### Prerequisites
-*   Node.js (v18+)
-*   MongoDB (Local or Atlas)
+## 📡 API Overview
 
-### 1. Backend Setup
+### Authentication
+- `POST /api/auth/register`
+- `POST /api/auth/login`
+- `POST /api/auth/logout`
 
-1.  Navigate to the server directory:
-    ```bash
-    cd server
-    ```
-2.  Install dependencies:
-    ```bash
-    npm install
-    ```
-3.  Configure Environment Variables:
-    *   Create a `.env` file in `server/` root.
-    *   Add the following:
-        ```
-        PORT=5000
-        MONGO_URI=mongodb://localhost:27017/skillnest
-        JWT_SECRET=your_super_secret_key
-        JWT_EXPIRE=30d
-        NODE_ENV=development
-        ```
-4.  Seed the Database (Optional but recommended):
-    ```bash
-    npm run data:import
-    ```
-5.  Start the Server:
-    ```bash
-    npm run dev
-    ```
+### Courses
+- `GET /api/courses`
+- `GET /api/courses/:id`
+- `POST /api/courses` (Admin)
+- `PUT /api/courses/:id` (Admin)
+- `DELETE /api/courses/:id` (Admin)
 
-### 2. Frontend Setup
+### Enrollment
+- `POST /api/enroll/:courseId`
+- `GET /api/enroll/my-enrollments`
 
-1.  Navigate to the client directory:
-    ```bash
-    cd client
-    ```
-2.  Install dependencies:
-    ```bash
-    npm install
-    ```
-3.  Start the Development Server:
-    ```bash
-    npm run dev
-    ```
-4.  Open [http://localhost:3000](http://localhost:3000) in your browser.
+### Users
+- `GET /api/users` (Admin)
 
-## API Documentation
+---
 
-*   **Auth**
-    *   `POST /api/auth/register` - Register a new user
-    *   `POST /api/auth/login` - Login user
-    *   `POST /api/auth/logout` - Logout user
-*   **Courses**
-    *   `GET /api/courses` - Get all courses
-    *   `GET /api/courses/:id` - Get single course
-    *   `POST /api/courses` - Create course (Admin)
-    *   `PUT /api/courses/:id` - Update course (Admin)
-    *   `DELETE /api/courses/:id` - Delete course (Admin)
-*   **Enrollment**
-    *   `POST /api/enroll/:courseId` - Enroll in a course
-    *   `GET /api/enroll/my-enrollments` - Get enrolled courses
-*   **Users**
-    *   `GET /api/users` - Get all users (Admin)
+## 🚀 Deployment
 
-## Credentials
+### Backend
+- Hosted on **Render**
+- Environment variables configured securely
+- Production-ready Express server
 
-*   **Admin User:**
-    *   Email: `admin@example.com`
-    *   Password: `password123`
-*   **Student User:**
-    *   Email: `john@example.com`
-    *   Password: `password123`
+### Frontend
+- Hosted on **Vercel**
+- Connected directly to GitHub
+- Optimized Next.js production build
 
-## Deployment
+For cross-domain authentication, cookies are configured with proper `SameSite` settings and `credentials: true` in Axios requests.
 
-### Backend (Render/Railway)
-1.  Push `server` folder to GitHub.
-2.  Connect to Render/Railway.
-3.  Set Build Command: `npm install && npm run build`
-4.  Set Start Command: `npm start`
-5.  Add Environment Variables.
+---
 
-### Frontend (Vercel)
-1.  Push `client` folder to GitHub.
-2.  Connect to Vercel.
-3.  Framework Preset: Next.js.
-4.  Add Environment Variables (if any).
-5.  Deploy.
+## 🎯 Design Philosophy
 
-Note regarding Cookies: For cross-domain cookies (Vercel Frontend + Render Backend), ensure `SameSite` is set correctly and `credentials: true` is used in Axios. You may need to set `trust proxy` in Express.
+SkillNest focuses on:
 
-## License
+- Clean minimal UI
+- Smooth user journeys
+- Clear course discovery experience
+- Scalable full-stack architecture
+- Industry-standard authentication practices
 
-MIT
+The wireframes were carefully planned in Figma before implementation to ensure structured layout and strong UX consistency.
+
+---
+
+## 📌 Why SkillNest?
+
+SkillNest demonstrates:
+
+- Full-stack development expertise
+- Modern Next.js App Router implementation
+- Secure backend API design
+- Proper separation of concerns
+- Clean UI with Tailwind CSS
+- Real-world deployment setup
+
+---
+
+## 👨‍💻 Author
+
+Built with precision and modern web practices to simulate a real-world ed-tech platform experience.
