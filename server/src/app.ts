@@ -6,12 +6,23 @@ const app: Application = express();
 
 // Middleware
 app.use(express.json());
+
+const allowedOrigins = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    process.env.CLIENT_ORIGIN, // Vercel production URL
+].filter(Boolean) as string[];
+
 app.use(cors({
-    origin: [
-        process.env.CLIENT_ORIGIN || 'http://localhost:3000',
-        'http://127.0.0.1:3000',
-        'http://localhost:3000',
-    ],
+    origin: (origin, callback) => {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV !== 'production') {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     credentials: true,
 }));
 app.use(cookieParser());
