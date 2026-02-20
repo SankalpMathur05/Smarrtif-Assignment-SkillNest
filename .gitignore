@@ -44,5 +44,8 @@ client/build/
 # Vercel
 .vercel
 
+# Kiro
+.kiro/
+
 # Note: dist/ is NOT ignored - needed for deployment verification
 # The compiled server code in server/dist/ should be tracked for Render deployment

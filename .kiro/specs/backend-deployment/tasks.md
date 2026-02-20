@@ -72,12 +72,12 @@ This implementation plan focuses on creating the necessary configuration files a
     - Run: git remote add origin https://github.com/SankalpMathur05/SkillNest-Smarrtif-Assignment.git
     - _Requirements: 6.5_
   
-  - [-] 6.3 Stage and commit all changes
+  - [x] 6.3 Stage and commit all changes
     - Run: git add .
     - Run: git commit -m "Add Render deployment configuration and documentation"
     - _Requirements: 6.5_
   
-  - [ ] 6.4 Push to GitHub
+  - [x] 6.4 Push to GitHub
     - Run: git branch -M main
     - Run: git push -u origin main
     - _Requirements: 6.5, 3.1_
@@ -140,7 +140,7 @@ This implementation plan focuses on creating the necessary configuration files a
     - Run minimum 100 iterations
     - Tag: Feature: backend-deployment, Property 3: Log Sanitization
 
-- [ ] 9. Final checkpoint - Deployment verification
+- [x] 9. Final checkpoint - Deployment verification
   - Verify code is pushed to GitHub successfully
   - Provide user with next steps for Render deployment
   - Reference DEPLOYMENT.md for detailed instructions
