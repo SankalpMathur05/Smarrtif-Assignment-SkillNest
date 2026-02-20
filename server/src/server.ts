@@ -13,6 +13,10 @@ const startServer = async () => {
             throw new Error('MONGO_URI is not defined in environment variables');
         }
 
+        if (!process.env.JWT_SECRET) {
+            throw new Error('JWT_SECRET is not defined in environment variables');
+        }
+
         console.log('Attempting to connect to MongoDB...');
         await mongoose.connect(MONGO_URI, {
             serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
